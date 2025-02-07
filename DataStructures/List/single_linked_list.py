@@ -7,6 +7,11 @@ def new_list ():
     
     return newlist
 
+        
+def new_single_node(element):
+    
+    return {"info": element, "next": None}
+
 def get_element(my_list, pos):
     searchpos = 0
     node = my_list["first"]
@@ -30,20 +35,7 @@ def is_present(my_list, element, cmp_function):
         count = -1
     return count
 
-def new_list ():
-    new_list = {
-        "first" : None,
-        "last" : None,
-        "size" : 0,
-    }
-    return new_list
-        
-        
-def new_single_node(element):
     
-    return {"info": element, "next": None}
-
-
 def add_first(my_list, element):
     nodo = new_single_node(element)
     
@@ -54,14 +46,34 @@ def add_first(my_list, element):
         my_list["last"] = my_list["first"]
         
     my_list["size"] += 1
+ 
+    return my_list
+
+def add_last(my_list, element):
+    new_node=new_single_node(element)
+    
+    if my_list["size"] == 0:
+        my_list["first"] = new_node
+    else:
+        my_list["last"]["next"] = new_node
+
+    my_list["last"] = new_node
+
+    
+    my_list["size"] += 1  
     
     return my_list
 
 def size(my_list):
     size = my_list["size"]
     return size
-    
 
-    
-    
-    
+def first_element(my_list):
+    element=None
+    if my_list["first"] is not None:
+        element=my_list["first"]
+    return element
+
+
+
+        

@@ -35,7 +35,7 @@ def test_add_first():
     assert type(lista["last"]) == dict
 
 
-@handle_not_implemented
+
 def test_add_last():
     lista = setup_tests()
 
@@ -62,7 +62,7 @@ def test_get_size():
     assert type(lt.size(lista)) == int
 
 
-@handle_not_implemented
+
 def test_get_first_element():
 
     lista = setup_tests()
