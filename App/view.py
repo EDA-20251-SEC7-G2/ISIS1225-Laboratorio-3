@@ -27,6 +27,7 @@
 import sys
 import App.logic as logic
 from DataStructures.List import array_list as lt
+from DataStructures.List import single_linked_list as sll
 
 
 """
@@ -136,3 +137,10 @@ def main():
         else:
             continue
     sys.exit(0)
+
+
+
+
+lista = sll.new_list()
+lista = sll.add_first(lista, 1)
+print(lista)
