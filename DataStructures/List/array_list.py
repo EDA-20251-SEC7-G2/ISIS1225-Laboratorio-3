@@ -40,3 +40,34 @@ def size(my_list):
 def first_element(my_list):
     return my_list['elements'][0]
 
+def is_empty(my_list):
+    return bool(my_list['elements'])
+
+def remove_first(my_list):
+    return my_list['elements'].pop(0)
+
+def remove_last(my_list):
+    return my_list['elements'].pop(-1)
+
+def delete_element(my_list,pos):
+    my_list['elements'].pop(pos)
+    return my_list
+
+def insert_element(my_list,pos, element):
+    my_list['elements'].insert(pos,element)
+    return my_list
+
+def change_info(my_list, pos, element):
+    my_list['elements'][pos]= element
+    return my_list
+
+def exchange(my_list,pos_1,pos_2):
+    el_1 = my_list['elements'][pos_1]
+    el_2 = my_list['elements'][pos_2]
+    my_list['elements'][pos_1] = el_2
+    my_list['elements'][pos_2] = el_1
+    return my_list
+
+def sub_list(my_list,pos_i,num_elements):
+    list = my_list['elements'][pos_i:pos_i+num_elements]
+    return {'size': len(list),'elements': list}
