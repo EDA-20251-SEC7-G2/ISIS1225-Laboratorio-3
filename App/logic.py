@@ -101,7 +101,7 @@ def load_tags(catalog):
     :return: El número de tags cargados
     """
     # TODO Implementar la carga de los tags
-    tagsfile = data_dir + 'GoodReads/books-medium.csv'
+    tagsfile = data_dir + 'GoodReads/tags.csv'
     input_file = csv.DictReader(open(tagsfile, encoding='utf-8'))
     for tag in input_file:
         add_tag(catalog, tag)
@@ -117,7 +117,7 @@ def load_books_tags(catalog):
     :return: El número de book_tags cargados
     """
     # TODO Implementar la carga de los book_tags
-    booktagfile = data_dir + 'GoodReads/books-medium.csv'
+    booktagfile = data_dir + 'GoodReads/books_tags.csv'
     input_file = csv.DictReader(open(booktagfile, encoding='utf-8'))
     for booktag in input_file:
         add_book_tag(catalog, booktag)
