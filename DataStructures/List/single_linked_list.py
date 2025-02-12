@@ -181,3 +181,22 @@ def exchange(my_list, pos_1, pos_2):
     current_node2["info"] = informacion1
     
     return my_list
+
+def sub_list(my_list, pos, num_elements):
+    sublist = new_list()  
+    if pos < 0 or pos >= my_list["size"]:
+        sublist=None
+    current = my_list["first"]  
+    for _ in range(pos):
+        current = current["next"]
+    count = 0  
+    while current is not None and count < num_elements:
+        if sublist["size"] == 0:
+            sublist = add_first(sublist, current["info"])  
+        else:
+            sublist = add_last(sublist, current["info"])  
+        current = current["next"]  
+        count += 1  
+    return sublist
+        
+        
