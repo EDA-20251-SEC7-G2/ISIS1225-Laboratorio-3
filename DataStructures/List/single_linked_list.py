@@ -7,6 +7,9 @@ def new_list ():
     
     return newlist
 
+def is_empty(my_list):
+    return my_list["size"] == 0
+
         
 def new_single_node(element):
     
@@ -69,11 +72,112 @@ def size(my_list):
     return size
 
 def first_element(my_list):
+    if is_empty(my_list):
+        raise Exception
     element=None
     if my_list["first"] is not None:
         element=my_list["first"]
     return element
 
-
-
+def last_element(my_list):
+    result = None
+    
+    if my_list["last"] is not None:
+        current_node = my_list["last"]
+        result = current_node["info"]
         
+    return result
+
+def remove_first(my_list):
+    removed_info = None
+    
+    if my_list["size"] > 0:
+        node = my_list["first"]
+        removed_info = node["info"]
+        
+    
+        
+    return removed_info
+
+def remove_last(my_list):
+    removed_info = None
+    
+    if my_list["size"] > 0:
+        if my_list["first"] == my_list ["last"]:
+            removed_info = remove_first(my_list)
+            
+        else:
+            current_node = my_list["first"]
+                                   
+            while current_node["next"] != my_list["last"]:
+                current_node = current_node["next"]
+                        
+    return removed_info
+
+def insert_element(my_list, element, pos):
+    searchpos = 0
+    node = my_list["first"]
+    current_node = node
+    while searchpos < pos:
+        node = node["next"]
+        searchpos += 1
+        current_node = node["info"]
+    
+    nuevo_nodo = new_single_node(element)
+    
+    current_node["next"] = nuevo_nodo["info"]
+        
+    my_list["size"] += 1
+ 
+    return my_list
+
+def delete_element(my_list, pos):
+    searchpos = 0
+    node = my_list["first"]
+    current_node = node
+    while searchpos < pos:
+        node = node["next"]
+        searchpos += 1
+        current_node = node["info"]
+    current_node = current_node["next"]
+        
+    my_list["size"] -= 1
+ 
+    return my_list
+
+def change_info(my_list, pos, new_info):
+    searchpos = 0
+    node = my_list["first"]
+    current_node = node
+    while searchpos < pos:
+        node = node["next"]
+        searchpos += 1
+        current_node = node["info"]
+    current_node["info"] = new_info
+ 
+    return my_list
+
+def exchange(my_list, pos_1, pos_2):
+    searchpos1 = 0
+    node = my_list["first"]
+    current_node1 = node
+    while searchpos1 < pos_1:
+        node = node["next"]
+        searchpos1 += 1
+        current_node1 = node["info"]
+    
+    searchpos2 = 0
+    node = my_list["first"]
+    current_node2 = node
+    while searchpos2 < pos_2:
+        node = node["next"]
+        searchpos2 += 1
+        current_node2 = node["info"]
+ 
+    informacion1 = current_node1["info"] 
+    informacion2 = current_node2["info"] 
+    
+    current_node1["info"] = informacion2
+    current_node2["info"] = informacion1
+    
+    return my_list
