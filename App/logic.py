@@ -101,7 +101,11 @@ def load_tags(catalog):
     :return: El número de tags cargados
     """
     # TODO Implementar la carga de los tags
-    pass
+    tagsfile = data_dir + 'GoodReads/books-medium.csv'
+    input_file = csv.DictReader(open(tagsfile, encoding='utf-8'))
+    for tag in input_file:
+        add_tag(catalog, tag)
+    return tag_size(catalog)
 
 
 def load_books_tags(catalog):
@@ -113,7 +117,11 @@ def load_books_tags(catalog):
     :return: El número de book_tags cargados
     """
     # TODO Implementar la carga de los book_tags
-    pass
+    booktagfile = data_dir + 'GoodReads/books-medium.csv'
+    input_file = csv.DictReader(open(booktagfile, encoding='utf-8'))
+    for booktag in input_file:
+        add_book_tag(catalog, booktag)
+    return book_tag_size(catalog)
 
 
 # Funciones de consulta sobre el catálogo
@@ -139,7 +147,13 @@ def get_best_book(catalog):
     :return: El libro con el mejor rating
     """
     # TODO Implementar la función del mejor libro por rating
+    pos_book = lt.is_present(
+        catalog['books'],compare_ratings)
+    if pos_book > 0:
+        bestbook = lt.get_element(catalog['authors'], pos_book)
+        return bestbook
     return None
+    
 
 
 def count_books_by_tag(catalog, tag):
@@ -152,7 +166,14 @@ def count_books_by_tag(catalog, tag):
     :return: El número de libros que fueron etiquetados con el tag dado
     """
     # TODO Implementar la función de conteo de libros por tag
-    pass
+    count=None
+    count_tag = lt.is_present(
+        catalog['tags'],tag, compare_tag_names)
+    if count_tag > 0:
+        tags = lt.get_element(catalog['authors'], count_tag)
+        count=tags
+    
+    return count
 
 
 # Funciones para agregar informacion al catalogo
@@ -248,7 +269,7 @@ def author_size(catalog):
     :return: El número de autores en el catálogo
     """
     # TODO Implementar la función de tamaño de autores
-    pass
+    return lt.size(catalog['authors'])
 
 
 def tag_size(catalog):
@@ -260,7 +281,7 @@ def tag_size(catalog):
     :return: El número de tags en el catálogo
     """
     # TODO Implementar la función de tamaño de tags
-    pass
+    return lt.size(catalog['tags'])
 
 
 def book_tag_size(catalog):
@@ -272,7 +293,7 @@ def book_tag_size(catalog):
     :return: El número de book_tags en el catálogo
     """
     # TODO Implementar la función de tamaño de book_tags
-    pass
+    return lt.size(catalog['booktags'])
 
 
 # Funciones utilizadas para comparar elementos dentro de una lista
