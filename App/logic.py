@@ -117,7 +117,7 @@ def load_books_tags(catalog):
     :return: El número de book_tags cargados
     """
     # TODO Implementar la carga de los book_tags
-    booktagfile = data_dir + 'GoodReads/books_tags.csv'
+    booktagfile = data_dir + 'GoodReads/book_tags.csv'
     input_file = csv.DictReader(open(booktagfile, encoding='utf-8'))
     for booktag in input_file:
         add_book_tag(catalog, booktag)
@@ -293,7 +293,7 @@ def book_tag_size(catalog):
     :return: El número de book_tags en el catálogo
     """
     # TODO Implementar la función de tamaño de book_tags
-    return lt.size(catalog['booktags'])
+    return lt.size(catalog['book_tags'])
 
 
 # Funciones utilizadas para comparar elementos dentro de una lista
