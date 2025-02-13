@@ -6,7 +6,10 @@ def new_list():
     return newlist
 
 def get_element(my_list,index):
-    return my_list['elements'][index]
+    if 0 <= index < len(my_list['elements']):
+        return my_list['elements'][index]
+    else:
+        return None
 
 def is_present(my_list,element,cmp_function):
     size = my_list['size']

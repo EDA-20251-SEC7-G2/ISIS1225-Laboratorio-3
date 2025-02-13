@@ -147,13 +147,14 @@ def get_best_book(catalog):
     :return: El libro con el mejor rating
     """
     # TODO Implementar la función del mejor libro por rating
-    pos_book = lt.is_present(
-        catalog['books'],compare_ratings)
-    if pos_book > 0:
-        bestbook = lt.get_element(catalog['authors'], pos_book)
-        return bestbook
-    return None
-    
+    books = catalog['books']['elements']
+    size = lt.size(catalog['books'])
+    best = books[0]
+    for pos_1 in range(0,size):
+            if compare_ratings(books[pos_1],best):
+                best= books[pos_1]
+            
+    return best
 
 
 def count_books_by_tag(catalog, tag):
